@@ -1,0 +1,29 @@
+universe:
+  market: "INDIA"
+  country: "IND"
+  exchange: "NSE"
+  tickers: ["^NSEI"] # Configurable ticker universe
+  start_date: "2015-01-01"
+  end_date: "2020-12-31"
+  prediction_horizon_days: 1
+  trading_calendar: "BSE"
+
+data:
+  market_data_provider: "yfinance"
+  news_provider: "mock" # To be implemented
+  earnings_provider: "mock" # To be implemented
+  
+nlp:
+  model_name: "ProsusAI/finbert"
+  batch_size: 16
+
+regime_detection:
+  hmm_n_states: [2, 3] # Try 2 and 3 states
+  hmm_features: ["return_1d", "volatility_21d"]
+
+models:
+  baseline: "logistic_regression"
+  
+portfolio:
+  initial_capital: 100000.0
+  transaction_cost_bps: 0.0
